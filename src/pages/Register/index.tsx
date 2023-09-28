@@ -3,7 +3,6 @@ import { Form, Formik } from 'formik';
 import { Button, TextField, Card, Typography, CardContent } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup';
-import './register.css'
 import { ApiUrl } from '../../utils/api';
 import Swal from 'sweetalert2';
 
@@ -13,9 +12,6 @@ const validationSchema = Yup.object().shape({
         .email('Invalid email')
         .required('Email is required'),
     password: Yup.string().min(5, 'Password must be at least 5 characters long')
-        .matches(
-          /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.{5,})/,
-          "Must Contain 5 Characters, One Alphabet and One Number")
         .required('Password is required')
 });
 
@@ -48,7 +44,9 @@ const RegisterForm: React.FC = () => {
         },
         body: JSON.stringify(values),
       });
-  
+      const data = await response.json()
+      console.log(data);
+      
       if (response.ok) {
         Swal.fire({
           icon: 'success',
@@ -93,7 +91,13 @@ const RegisterForm: React.FC = () => {
           handleBlur,
           isSubmitting,
         }) => (
-          <Card className='form-card'>
+          <Card style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '300px',
+            padding: '20px'}}>
             <Typography sx={{ fontSize: 18 }} color="text.secondary" gutterBottom>
               Registration Form
             </Typography>
@@ -103,6 +107,7 @@ const RegisterForm: React.FC = () => {
                   label="Name"
                   variant="outlined"
                   name="name"
+                  placeholder='Enter name'
                   fullWidth
                   required
                   onChange={handleChange}
@@ -115,6 +120,7 @@ const RegisterForm: React.FC = () => {
                   label="Email"
                   variant="outlined"
                   name="email"
+                  placeholder='Enter email'
                   fullWidth
                   required
                   onChange={handleChange}
@@ -128,6 +134,7 @@ const RegisterForm: React.FC = () => {
                   variant="outlined"
                   name="password"
                   type="password"
+                  placeholder='Enter password'
                   fullWidth
                   required
                   onChange={handleChange}
@@ -144,9 +151,9 @@ const RegisterForm: React.FC = () => {
                 disabled={isLoading || isSubmitting}
                 fullWidth
               >
-                {isLoading ? 'Signing Up...' : 'SignUp'}
+                {isLoading ? 'Signing Up...' : 'Sign Up'}
               </Button>
-              <h4 className='h4' style={{color:'grey', fontSize: 18}}>or</h4>              
+              <h4 style={{ color: 'grey', fontSize: '18px', marginTop: '10px', marginBottom: '10px', textAlign: 'center' }}>or</h4>              
               <Button
                 onClick={()=> navigate('/login')}
                 type="button"

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useAuthChecker } from '../../hook'
 import { ApiUrl } from '../../utils/api'
-import { Button, Table, TableBody, TableContainer, TableRow } from '@mui/material'
+import { Button, Table, TableBody, TableContainer, TableRow, Typography } from '@mui/material'
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper"
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 // table style //
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -28,7 +29,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   }));
   
 
-interface userProfile {
+export interface userProfile {
     id: string,
     name: string,
     email: string
@@ -53,7 +54,8 @@ const ProfilePage : React.FC = ()=> {
           if (response.ok) {
             const data = await response.json();
             setProfilePreview(data.data);
-          } else {
+          } 
+          else {
             console.error('Failed to fetch Profile');
           }
         } catch (error) {
@@ -65,8 +67,7 @@ const ProfilePage : React.FC = ()=> {
     useEffect(()=> {
         fetchProfile()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-    
+    }, [])    
     
     return (
         <div style={{width: '100%', height:'90vh', paddingTop:'20vh'}}>            
@@ -82,6 +83,10 @@ const ProfilePage : React.FC = ()=> {
             <div>Loading...</div>
             ) : profilePreview ? (
             <TableContainer component={Paper} style={{width: 300, marginLeft: 'auto', marginRight: 'auto'}}>
+              <Typography sx={{ fontSize: 18 }} color="text.secondary" style={{textAlign: 'center', paddingTop: 5}} gutterBottom>
+                <AccountCircleIcon />
+                &nbsp;Logged in as
+              </Typography>
                 <Table aria-label="customized table">
                   <TableBody>
                     <StyledTableRow>

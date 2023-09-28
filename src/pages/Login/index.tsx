@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
 import { Button, TextField, Card, Typography, CardContent } from '@mui/material';
 import * as Yup from 'yup';
-import './login.css'
 import { useNavigate } from 'react-router-dom'
 import { ApiUrl } from '../../utils/api';
 import Swal from 'sweetalert2';
@@ -83,7 +82,13 @@ const LoginForm: React.FC = ()=> {
           handleBlur,
           isSubmitting,
         }) => (
-          <Card className='form-card'>
+          <Card style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '300px',
+            padding: '20px'}}>
             <Typography sx={{ fontSize: 18 }} color="text.secondary" gutterBottom>
               Login Form
             </Typography>
@@ -93,6 +98,7 @@ const LoginForm: React.FC = ()=> {
                   label="Email"
                   variant="outlined"
                   name="email"
+                  placeholder='Enter email'
                   fullWidth
                   required
                   onChange={handleChange}
@@ -106,6 +112,7 @@ const LoginForm: React.FC = ()=> {
                   variant="outlined"
                   name="password"
                   type="password"
+                  placeholder='Enter password'
                   fullWidth
                   required
                   onChange={handleChange}
@@ -124,7 +131,7 @@ const LoginForm: React.FC = ()=> {
               >
                 {isLoading ? 'Logging in...' : 'Login'}
               </Button>              
-                <h4 className='h4' style={{color:'grey', fontSize: 18}}>or</h4>
+                <h4 style={{ color: 'grey', fontSize: '18px', marginTop: '10px', marginBottom: '10px', textAlign: 'center' }}>or</h4>
               <Button
                 onClick={()=> navigate('/register')}
                 variant="outlined"
