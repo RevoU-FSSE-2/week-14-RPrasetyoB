@@ -1,13 +1,13 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
-import LoginForm from'./';
+import EditCategory from'./';
 import { BrowserRouter } from 'react-router-dom';
 
 global.fetch = jest.fn().mockResolvedValue({
   json: async () => ({ token: 'mockedToken'})
 });
 
-describe('test login form', () => {
+describe('test add category form', () => {
   beforeAll(() => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
@@ -23,82 +23,72 @@ describe('test login form', () => {
       })),
     });
   });  
-    test('title login form render correctly', async () => {
+    test('title Edit category form render correctly', async () => {
         render(
             <BrowserRouter>
-              <LoginForm />
+              <EditCategory />
             </BrowserRouter>
           );
-        const title = screen.getByText('Login Form')
+        const title = screen.getByText('Edit Category')
         expect(title).toBeDefined();
     })
 
-    test('label email render correctly', async () => {
+    test('label Edit category render correctly', async () => {
         render(
             <BrowserRouter>
-              <LoginForm />
+              <EditCategory />
             </BrowserRouter>
           );
-        const title = screen.getByText('Email')
+        const title = screen.getByText('Category')
         expect(title).toBeDefined();
     })
 
-    test('label password render correctly', async () => {
+    test('label status render correctly', async () => {
         render(
             <BrowserRouter>
-              <LoginForm />
+              <EditCategory />
             </BrowserRouter>
           );
-        const title = screen.getByText('Password')
+        const title = screen.getByText('Status')
         expect(title).toBeDefined();
     })
 
-    test('button submit render correctly', async () => {
+    test('button Update render correctly', async () => {
         render(
             <BrowserRouter>
-              <LoginForm />
+              <EditCategory />
             </BrowserRouter>
           );
-        const title = screen.getByText('Login')
+        const title = screen.getByText('Update')
         expect(title).toBeDefined();
     }),
 
-    test('button to Sign up render correctly', async () => {
+    test('button cancel render correctly', async () => {
         render(
             <BrowserRouter>
-              <LoginForm />
+              <EditCategory />
             </BrowserRouter>
           );
-        const title = screen.getByText('Sign Up')
-        expect(title).toBeDefined();
-    }),
-
-    test('or render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <LoginForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('or')
+        const title = screen.getByText('Cancel')
         expect(title).toBeDefined();
     })
+
 
   test('submits the form and set token in localStorage', async () => {   
       render(<BrowserRouter>
-              <LoginForm />
+              <EditCategory />
             </BrowserRouter>)
-      const email = screen.getByPlaceholderText('Enter email');
-      const password = screen.getByPlaceholderText('Enter password');
-      const button = screen.getByText('Login');
+      const category = screen.getByPlaceholderText('Enter update category');
+      const status = screen.getByPlaceholderText('Choose status');
+      const button = screen.getByText('Update');
 
       act(() => {
-          fireEvent.change(email, { target: { value : 'rpb@aa.com'}});
-          fireEvent.change(password, { target: { value : 'password'}});
+          fireEvent.change(category, { target: { value : 'test'}});
+          fireEvent.change(status, { target: { value : 'true'}});
           fireEvent.click(button);
       })
-
       await waitFor(() => {
-          expect(global.fetch).toHaveBeenCalledWith('https://mock-api.arikmpt.com/api/user/login', expect.any(Object));
+          expect(global.fetch).toHaveBeenCalledWith('https://mock-api.arikmpt.com/api/category/update', expect.any(Object));
       })
-  })
+    })
 })

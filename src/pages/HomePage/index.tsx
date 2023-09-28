@@ -17,7 +17,6 @@ import TablePagination from "@mui/material/TablePagination";
 import TableFooter from "@mui/material/TableFooter";
 import { useNavigate } from "react-router-dom";
 import { useAuthChecker } from "../../hook";
-import "./home.css";
 
 // table style //
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
@@ -160,20 +159,38 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="home-page" >
-      <div className="home-body">
-        <div className="btn-upper" >
+    <div style={{alignItems: "center",
+      padding: "auto",
+      backgroundColor: 'rgb(223, 222, 222)',
+      width: "100%",
+      height: '100vw',
+      position: 'relative',
+      overflow: 'auto'}}>
+      <div style={{paddingTop: '10vh',
+        width: '700px',
+        textAlign: 'center',
+        marginLeft: 'auto',
+        marginRight: 'auto'}}>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          marginBottom: '5px',
+          height: '30px',
+          marginLeft: 'auto',
+          marginRight: 'auto'}}>
           <Button size="large" onClick={() => navigate("/add")}>
             Add category
           </Button>
           <div className="filter">
             <input
+              style={{height: '90%'}}
               type="text"
               placeholder="Filter by name"
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
             />
             <select
+              style={{height: '90%'}}
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
             >
@@ -182,10 +199,10 @@ const HomePage: React.FC = () => {
               <option value="Deactive">Deactive</option>
             </select>
           </div>
-          <div className="user-control">
+          <div style={{display: 'flex', gap: '5px'}}>
             <Button variant="contained" size="medium" onClick={() => navigate(`/profile/:${userProfile?.id}`)} className="btn-profile">
               Profile
-            </Button><Button variant="outlined" color="error" size="medium" onClick={handleLogout} className="btn-logout">
+            </Button><Button variant="outlined" color="error" size="medium" onClick={handleLogout} style={{padding: '0 8px'}}>
               Log Out
             </Button>         
           </div>
@@ -213,7 +230,7 @@ const HomePage: React.FC = () => {
                     <StyledTableCell component="th" scope="row" className="td">
                       {category.id.slice(20,36)}
                     </StyledTableCell>
-                    <StyledTableCell align="center" className="td name-cell">
+                    <StyledTableCell align="center" className="td" style={{maxWidth: '200px', overflow: 'auto'}}>
                       {category.name}
                     </StyledTableCell>
                     <StyledTableCell align="center">
@@ -223,6 +240,7 @@ const HomePage: React.FC = () => {
                       <Stack direction="row" justifyContent={"flex-end"} spacing={2}>
                         <Button
                           onClick={() => navigate(`/edit/${category.id}`)}
+                          data-testid={`edit-button-${category.id}`}
                           variant="outlined" startIcon={<Edit />}
                           className="btn-edit"
                           size="small"
@@ -232,6 +250,7 @@ const HomePage: React.FC = () => {
                         <Button
                           color="error"
                           variant="contained"
+                          data-testid={`delete-button-${category.id}`}
                           onClick={() => DeleteCategory(category.id)}
                           endIcon={<DeleteIcon />}
                           size="small"

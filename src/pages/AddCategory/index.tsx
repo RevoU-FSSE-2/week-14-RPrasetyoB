@@ -114,7 +114,14 @@ const AddCategory: React.FC = () => {
                     handleBlur,
                     isSubmitting,
                 }) => (
-                    <Card className="form-card">
+                    <Card
+                        style={{
+                            position: 'fixed',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            width: '300px',
+                            padding: '20px'}}>
                         <Typography
                             sx={{ fontSize: 18 }}
                             color="text.secondary"
@@ -128,6 +135,7 @@ const AddCategory: React.FC = () => {
                                     label="Category"
                                     variant="outlined"
                                     name="name"
+                                    placeholder="Enter new category"
                                     fullWidth
                                     required
                                     onChange={handleChange}
@@ -141,7 +149,7 @@ const AddCategory: React.FC = () => {
                                     <Select
                                         label="Status"
                                         name="is_active"
-                                        placeholder={status}
+                                        placeholder='Choose status'
                                         value={status}
                                         onChange={handleStatus}
                                         required

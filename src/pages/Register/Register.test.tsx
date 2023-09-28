@@ -6,7 +6,7 @@ import { act } from 'react-dom/test-utils'
 global.fetch = jest.fn().mockResolvedValue({
   json: async () => ({ token: 'mockedToken'})
 });
-describe('test login form', () => {
+describe('test register form', () => {
   beforeAll(() => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
@@ -22,7 +22,7 @@ describe('test login form', () => {
       })),
     });
   });
-    test('title login form render correctly', async () => {
+    test('title register form render correctly', async () => {
         render(
             <BrowserRouter>
               <RegisterForm />
@@ -32,7 +32,7 @@ describe('test login form', () => {
         expect(title).toBeDefined();
     })
 
-    test('title login form render correctly', async () => {
+    test('Label name render correctly', async () => {
         render(
             <BrowserRouter>
               <RegisterForm />
@@ -68,17 +68,17 @@ describe('test login form', () => {
               <RegisterForm />
             </BrowserRouter>
           );
-        const title = screen.getByText('Login')
+        const title = screen.getByText('Sign Up')
         expect(title).toBeDefined();
     })
 
-    test('button submit render correctly', async () => {
+    test('button to Login correctly', async () => {
         render(
             <BrowserRouter>
               <RegisterForm />
             </BrowserRouter>
           );
-        const title = screen.getByText('Sign Up')
+        const title = screen.getByText('Login')
         expect(title).toBeDefined();
     })
 
