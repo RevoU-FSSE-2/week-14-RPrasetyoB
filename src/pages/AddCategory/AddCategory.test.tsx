@@ -23,56 +23,34 @@ describe('test add category form', () => {
       })),
     });
   });  
-    test('title Add category form render correctly', async () => {
+    test('Add category Title render correctly', async () => {
         render(
             <BrowserRouter>
               <AddCategory />
             </BrowserRouter>
           );
-        const title = screen.getByText('Add Category')
-        expect(title).toBeDefined();
+        expect(screen.getByText('Add Category')).toBeDefined();
     })
 
-    test('label category render correctly', async () => {
+    test('labels category render correctly', async () => {
         render(
             <BrowserRouter>
               <AddCategory />
             </BrowserRouter>
           );
-        const title = screen.getByText('Category')
-        expect(title).toBeDefined();
+        expect(screen.getByText('Category')).toBeDefined();
+        expect(screen.getByText('Status')).toBeDefined();
     })
 
-    test('label status render correctly', async () => {
+    test('Buttons render correctly', async () => {
         render(
             <BrowserRouter>
               <AddCategory />
             </BrowserRouter>
           );
-        const title = screen.getByText('Status')
-        expect(title).toBeDefined();
+          expect(screen.getByText('Add')).toBeDefined();
+          expect(screen.getByText('Cancel')).toBeDefined();
     })
-
-    test('button add render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <AddCategory />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Add')
-        expect(title).toBeDefined();
-    }),
-
-    test('button cancel render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <AddCategory />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Cancel')
-        expect(title).toBeDefined();
-    })
-
 
   test('submits the form and set token in localStorage', async () => {   
       render(<BrowserRouter>

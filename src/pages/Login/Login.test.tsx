@@ -23,64 +23,34 @@ describe('test login form', () => {
       })),
     });
   });  
-    test('title login form render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <LoginForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Login Form')
-        expect(title).toBeDefined();
+    test('Login Form Title render correctly', async () => {
+      render(
+          <BrowserRouter>
+            <LoginForm />
+          </BrowserRouter>
+        );
+      expect(screen.getByText('Login Form')).toBeDefined();
     })
 
-    test('label email render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <LoginForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Email')
-        expect(title).toBeDefined();
-    })
+  test('labels render correctly', async () => {
+    render(
+        <BrowserRouter>
+          <LoginForm />
+        </BrowserRouter>
+      );
+    expect(screen.getByText('Email')).toBeDefined();
+    expect(screen.getByText('Password')).toBeDefined();
+    expect(screen.getByText('or')).toBeDefined();
+  })
 
-    test('label password render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <LoginForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Password')
-        expect(title).toBeDefined();
-    })
-
-    test('button submit render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <LoginForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Login')
-        expect(title).toBeDefined();
-    }),
-
-    test('button to Sign up render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <LoginForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Sign Up')
-        expect(title).toBeDefined();
-    }),
-
-    test('or render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <LoginForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('or')
-        expect(title).toBeDefined();
+  test('buttons render correctly', async () => {
+      render(
+          <BrowserRouter>
+            <LoginForm />
+          </BrowserRouter>
+        );
+      expect(screen.getByText('Login')).toBeDefined();
+      expect(screen.getByText('Sign Up')).toBeDefined();
     })
 
   test('submits the form and set token in localStorage', async () => {   

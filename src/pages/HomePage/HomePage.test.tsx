@@ -13,14 +13,15 @@ describe('HomePage', () => {
         localStorage.clear();
       });
 
-  it('label Add category renders correctly', () => {
+  it('Buttons renders correctly', () => {
     render(
         <BrowserRouter>
             <HomePage />
         </BrowserRouter>
         );
-    const addCategoryButton = screen.getByText('Add category');
-    expect(addCategoryButton).toBeDefined();
+    expect(screen.getByText('Add category')).toBeDefined();
+    expect(screen.getByText('Profile')).toBeDefined();
+    expect(screen.getByText('Log Out')).toBeDefined();
   });
 
   it('Filter status category renders correctly', () => {
@@ -43,65 +44,17 @@ describe('HomePage', () => {
     expect(addCategoryButton).toBeDefined();
   });
 
-  it('Button Profile renders correctly', () => {
+  it('Labels Table Head renders correctly', () => {
     render(
         <BrowserRouter>
             <HomePage />
         </BrowserRouter>
         );
-    const addCategoryButton = screen.getByText('Profile');
-    expect(addCategoryButton).toBeDefined();
-  });
-
-  it('Button Log out renders correctly', () => {
-    render(
-        <BrowserRouter>
-            <HomePage />
-        </BrowserRouter>
-        );
-    const addCategoryButton = screen.getByText('Log Out');
-    expect(addCategoryButton).toBeDefined();
-  });
-
-  it('Label ID renders correctly', () => {
-    render(
-        <BrowserRouter>
-            <HomePage />
-        </BrowserRouter>
-        );
-    const addCategoryButton = screen.getByText('ID');
-    expect(addCategoryButton).toBeDefined();
-  });
-
-  it('Label Name renders correctly', () => {
-    render(
-        <BrowserRouter>
-            <HomePage />
-        </BrowserRouter>
-        );
-    const addCategoryButton = screen.getByText('Name');
-    expect(addCategoryButton).toBeDefined();
-  });
-
-  it('Label Status renders correctly', () => {
-    render(
-        <BrowserRouter>
-            <HomePage />
-        </BrowserRouter>
-        );
-    const addCategoryButton = screen.getByText('Status');
-    expect(addCategoryButton).toBeDefined();
-  });
-
-  it('Label Action renders correctly', () => {
-    render(
-        <BrowserRouter>
-            <HomePage />
-        </BrowserRouter>
-        );
-    const addCategoryButton = screen.getByText('Action');
-    expect(addCategoryButton).toBeDefined();
-  });
+    expect(screen.getByText('ID')).toBeDefined();
+    expect(screen.getByText('Name')).toBeDefined();
+    expect(screen.getByText('Status')).toBeDefined();
+    expect(screen.getByText('Action')).toBeDefined();
+  });  
 
   it('logs out on button click', () => {
     localStorage.setItem('authToken', 'testToken');

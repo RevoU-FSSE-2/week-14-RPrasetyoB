@@ -23,56 +23,34 @@ describe('test add category form', () => {
       })),
     });
   });  
-    test('title Edit category form render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <EditCategory />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Edit Category')
-        expect(title).toBeDefined();
+    test('Edit category Title form render correctly', async () => {
+      render(
+          <BrowserRouter>
+            <EditCategory />
+          </BrowserRouter>
+        );
+      expect(screen.getByText('Edit Category')).toBeDefined();
     })
 
-    test('label Edit category render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <EditCategory />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Category')
-        expect(title).toBeDefined();
+    test('labels Edit category render correctly', async () => {
+      render(
+          <BrowserRouter>
+            <EditCategory />
+          </BrowserRouter>
+        );
+      expect(screen.getByText('Category')).toBeDefined();
+      expect(screen.getByText('Status')).toBeDefined();
     })
 
-    test('label status render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <EditCategory />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Status')
-        expect(title).toBeDefined();
+    test('buttons render correctly', async () => {
+      render(
+          <BrowserRouter>
+            <EditCategory />
+          </BrowserRouter>
+        );
+      expect(screen.getByText('Update')).toBeDefined();
+      expect(screen.getByText('Cancel')).toBeDefined();
     })
-
-    test('button Update render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <EditCategory />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Update')
-        expect(title).toBeDefined();
-    }),
-
-    test('button cancel render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <EditCategory />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Cancel')
-        expect(title).toBeDefined();
-    })
-
 
   test('submits the form and set token in localStorage', async () => {   
       render(<BrowserRouter>

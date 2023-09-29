@@ -22,74 +22,35 @@ describe('test register form', () => {
       })),
     });
   });
-    test('title register form render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <RegisterForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Registration Form')
-        expect(title).toBeDefined();
+    test('Register form Title render correctly', async () => {
+      render(
+          <BrowserRouter>
+            <RegisterForm />
+          </BrowserRouter>
+        );
+      expect(screen.getByText('Registration Form')).toBeDefined();
     })
 
     test('Label name render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <RegisterForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Name')
-        expect(title).toBeDefined();
+      render(
+          <BrowserRouter>
+            <RegisterForm />
+          </BrowserRouter>
+        );
+      expect(screen.getByText('Name')).toBeDefined();
+      expect(screen.getByText('Email')).toBeDefined();
+      expect(screen.getByText('Password')).toBeDefined(); 
+      expect(screen.getByText('or')).toBeDefined();        
     })
 
-    test('label email render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <RegisterForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Email')
-        expect(title).toBeDefined();
-    })
-
-    test('label password render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <RegisterForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Password')
-        expect(title).toBeDefined();
-    })
-
-    test('button submit render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <RegisterForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Sign Up')
-        expect(title).toBeDefined();
-    })
-
-    test('button to Login correctly', async () => {
-        render(
-            <BrowserRouter>
-              <RegisterForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('Login')
-        expect(title).toBeDefined();
-    })
-
-    test('or render correctly', async () => {
-        render(
-            <BrowserRouter>
-              <RegisterForm />
-            </BrowserRouter>
-          );
-        const title = screen.getByText('or')
-        expect(title).toBeDefined();
+    test('Buttons render correctly', async () => {
+      render(
+          <BrowserRouter>
+            <RegisterForm />
+          </BrowserRouter>
+        );
+      expect(screen.getByText('Sign Up')).toBeDefined();
+      expect(screen.getByText('Login')).toBeDefined();
     })
     
     test('submit registration test', async () => { 

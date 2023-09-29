@@ -25,7 +25,7 @@ const EditCategory: React.FC = () => {
   const { id } = useParams();
   const Url1 = ApiUrl + `/category/${id}`;
   
-  const [category, setCategory] = useState<EditCategory | null>(null);
+  const [category, setCategory] = useState<EditCategory>();
   const initialValues = {
     id: '',
     name: category?.name,
@@ -136,9 +136,9 @@ const EditCategory: React.FC = () => {
                   name="name"
                   fullWidth
                   defaultValue={category?.name}
+                  onChange={handleChange}
                   placeholder='Enter update category'
                   required
-                  onChange={handleChange}
                   onBlur={handleBlur}
                   error={Boolean(touched.name && errors.name)}
                   helperText={touched.name && errors.name}
