@@ -17,11 +17,11 @@ This project is a simple web application built with React that allows users to m
 - Formik
 - Yup
 
-## How to Use APP in your VSC
+## How to run unit testing in your VSC
 ```
 git clone
 npm install
-npm run dev
+npm run test
 ```
 
 ## Deployment
