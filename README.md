@@ -24,6 +24,9 @@ npm install
 npm run test
 ```
 
+## Test result 
+![image](https://github.com/RevoU-FSSE-2/week-14-RPrasetyoB/assets/129088807/cf86d9df-5a79-43b5-9a14-6b428fe89477)
+
 ## Deployment
 
 [Link](https://week13-rpb.netlify.app/)
