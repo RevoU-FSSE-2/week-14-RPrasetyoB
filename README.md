@@ -20,7 +20,7 @@ npm install
 npm run test
 ```
 
-## If you want see presetage of unit testing coverage
+## If you want see precentage of unit testing coverage
 ```
 npx jest --coverage
 ```
